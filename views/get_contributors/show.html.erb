@@ -1,6 +1,6 @@
 <h1>
   contributors
-  <pre>
-    <%= data %>
-  </pre>
+    <% certs.each do | cert | %>
+      <a href="<%= cert[:url] %>"><%= cert[:owner] %></a>
+    <% end %>
 </h1>

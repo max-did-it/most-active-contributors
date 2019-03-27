@@ -19,6 +19,6 @@ class Contributors
   end
 
   def parse_rep_url(url)
-    url.scan(%r{.*(github.com)/([a-z-]+)/([a-z-]+)}).flatten
+    url.scan(%r{.*(github.com)/([a-z-_]+)/([a-z-_]+)}).flatten
   end
 end

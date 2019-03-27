@@ -16,7 +16,7 @@ class HttpHandler
       data: prepared_data.data
     )
 
-    body = GetContributors::Show.render(format: :html, data: result.data)
+    body = GetContributors::Show.render(format: :html, certs: result.certs)
     status = 200
     { body: body, status: status }
   end
