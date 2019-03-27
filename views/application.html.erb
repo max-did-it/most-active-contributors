@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+  <title>Document</title>
+</head>
+<body class="hero">
+  <div class="container hero-body">
+    <div class="hero">
+      <div class="head">
+          <h1 class="title">Get certificate for biggest contribution</h1>
+      </div>
+      <div class="hero-body">
+        <form class="box" action="/get_contributors" >
+        <div class="field">
+            <h2 class='label'>
+                Enter url repository
+            </h2>
+            <input id="repo" class="input" type="text" name="repo"/>
+        </div>
+        <div class="field">
+            <input type="submit" class='button is-primary' value="search"/>
+        </div>
+        </form>
+      </div>
+    </div>
+    <%= yield %>
+  </div>
+</body>
+</html>

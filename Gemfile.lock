@@ -1,0 +1,68 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (5.2.2.1)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 0.7, < 2)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+    bigdecimal (1.4.3)
+    bson (4.4.2)
+    concurrent-ruby (1.1.5)
+    dotenv (2.6.0)
+    erubis (2.7.0)
+    faraday (0.15.4)
+      multipart-post (>= 1.2, < 3)
+    graphql (1.9.3)
+    graphql-client (0.14.0)
+      activesupport (>= 3.0, < 6.0)
+      graphql (~> 1.6)
+    hanami-utils (1.3.1)
+      concurrent-ruby (~> 1.0)
+      transproc (~> 1.0)
+    hanami-view (1.3.1)
+      hanami-utils (~> 1.3)
+      tilt (~> 2.0, >= 2.0.1)
+    i18n (1.6.0)
+      concurrent-ruby (~> 1.0)
+    interactor (3.1.1)
+    json (2.2.0)
+    minitest (5.11.3)
+    mongo (2.8.0)
+      bson (>= 4.4.2, < 5.0.0)
+    multipart-post (2.0.0)
+    pdf-core (0.7.0)
+    prawn (2.2.2)
+      pdf-core (~> 0.7.0)
+      ttfunk (~> 1.5)
+    puma (3.12.1)
+    rack (2.0.6)
+    rubyzip (1.2.2)
+    thread_safe (0.3.6)
+    tilt (2.0.9)
+    transproc (1.0.3)
+    ttfunk (1.5.1)
+    tzinfo (1.2.5)
+      thread_safe (~> 0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bigdecimal (= 1.4.3)
+  bson
+  dotenv
+  erubis
+  faraday
+  graphql-client
+  hanami-view
+  interactor
+  json
+  mongo
+  prawn
+  puma
+  rack
+  rubyzip
+
+BUNDLED WITH
+   2.0.1
