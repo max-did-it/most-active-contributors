@@ -1,21 +1,22 @@
 require 'hanami-view'
 require 'erubis'
-
+require 'interactor'
+require 'faraday'
 Dir[File.join(File.dirname(__FILE__), 'views', '**', '*.rb')].sort.each { |file| require file }
 Dir[File.join(File.dirname(__FILE__), 'interactors', '**', '*.rb')].sort.each { |file| require file }
 Dir[File.join(File.dirname(__FILE__), 'graphql', 'queries', '*.rb')].sort.each { |file| require file }
 ##
 #
 class HttpHandler
-
   def get_contributors(params)
-    response = Contributors.call(
-      repository_path: params["repo"]
+    prepared_data = Contributors.call(
+      repository_path: params['repo']
     )
-    zip = nil
-    serts = nil
+    result = CertsGenerator.call(
+      data: prepared_data.data
+    )
 
-    body = GetContributors::Show.render(format: :html, zip: zip, serts: serts)
+    body = GetContributors::Show.render(format: :html, data: result.data)
     status = 200
     { body: body, status: status }
   end

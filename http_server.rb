@@ -15,12 +15,14 @@ class HttpServer
   def call(env)
     request = Rack::Request.new(env)
     params = if request.get?
-      request.params
-    elsif request.post?
-      body = request.body.read
-      JSON.parse(request.body)
+               request.params
+             elsif request.post?
+               body = request.body.read
+               JSON.parse(body)
     end
+
     return response if params.nil?
+
     case request.path_info
     when '/'
       resp = @handler.home
@@ -29,7 +31,6 @@ class HttpServer
       resp = @handler.get_contributors(params)
       return response(resp)
     end
-    # request.logger.info("hwllo")
     response
   end
 end
