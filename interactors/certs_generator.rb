@@ -31,7 +31,7 @@ class CertsGenerator
     dir = get_path_to_certs
 
     Prawn::Document.generate(dir + '/' + name + '.pdf') do
-      text = "
+      text "
         Thank you, #{name}!
         Your contribution to #{context.data[:repo].capitalize}
                    is the biggest!!!
