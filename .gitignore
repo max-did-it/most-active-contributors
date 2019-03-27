@@ -1,2 +1,4 @@
 .env
 Gemfile.lock
+!public/certificates/.keep
+public/certificates/*
