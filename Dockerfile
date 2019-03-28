@@ -1,4 +1,4 @@
-FROM ruby2.6
+FROM ruby:2.6
 
 # dependens for rails
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
@@ -24,8 +24,7 @@ WORKDIR /rack_server
 
 COPY ./Gemfile ./
 RUN echo '' >> ./Gemfile.lock
-
 RUN gem install bundler
-
+COPY ./ ./
 RUN bundle
-ENTRYPOINT [ "/bin/bash"]
+CMD  rackup --host 0.0.0.0 --port ${PORT} 
