@@ -1,3 +1,4 @@
+require 'json'
 class Contributors
   include Interactor
   def call
@@ -12,7 +13,7 @@ class Contributors
     )
     response = JSON.parse(connection.get.body)
     context.data = {
-      top: response[0, 3].map { |contrib| contrib['login']},
+      top: response[0, 3].map { |contrib| contrib['login'] },
       login: params[1],
       repo: params[2]
     }

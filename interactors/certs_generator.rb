@@ -4,6 +4,8 @@ class CertsGenerator
 
   def call
     context.certs = []
+    return context.error = true if context.data.nil? || context.data[:top].empty?
+
     context.data[:top].each do |name|
       url = generate_pdf(name) unless cert_exist? name
       context.certs << { url: url, owner: name }
