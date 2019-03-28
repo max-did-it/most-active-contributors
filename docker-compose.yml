@@ -1,0 +1,29 @@
+version: '3.1'
+services:
+  nginx:
+    restart: always
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: Nginx.dockerfile
+    links: 
+      - rack_server
+    ports: 
+      - 80:80
+    volumes:
+      - ./docker/config/nginx:/etc/nginx/conf.d
+      - ./:/rack_server
+  server: 
+    restart: always
+    container_name: rack_server
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes: 
+      - ./:/rack_server
+    entrypoint: 
+      - ./entrypoint.sh
+    ports: 
+      - 127.0.0.1:3000:3000
+    
+    
