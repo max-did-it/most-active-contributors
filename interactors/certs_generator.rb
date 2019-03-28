@@ -1,7 +1,4 @@
 require 'prawn'
-require 'fileutils'
-require 'bson'
-require_relative Dir.pwd + '/mongo/client.rb'
 class CertsGenerator
   include Interactor
 
@@ -9,7 +6,7 @@ class CertsGenerator
     context.certs = []
     context.data[:top].each do |name|
       url = generate_pdf(name) unless cert_exist? name
-      context.certs << {url: url, owner: name}
+      context.certs << { url: url, owner: name }
     end
   end
 
@@ -41,7 +38,6 @@ class CertsGenerator
     dirname = get_path_to_certs
     splited = dirname.split(%r{[/]})
     curr_path = []
-    puts '/' + curr_path.join('/')
     splited.each do |n|
       curr_path << n
       Dir.mkdir('/' + curr_path.join('/')) unless Dir.exist?('/' + curr_path.join('/'))

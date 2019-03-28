@@ -30,6 +30,33 @@ class HttpServer
     when '/get_contributors'
       resp = @handler.get_contributors(params)
       return response(resp)
+    else
+
+      pdf_url = request.path_info.scan %r{/(public)/(certificates)/([0-9A-Za-z\-_]+)/([0-9A-Za-z\-_]+)/([0-9A-Za-z\-_]+\.pdf)}
+      unless pdf_url.empty?
+        return response unless File.file?(Dir.pwd + request.path_info)
+
+        return response(
+          headers: {
+            'Content-Type' => 'application/pdf'
+          },
+          body: File.open(Dir.pwd + request.path_info).read,
+          status: 200
+        )
+      end
+      zip_url = request.path_info.scan %r{/(public)/(certificates)/([0-9A-Za-z\-_]+)/([0-9A-Za-z\-_]+)/([0-9A-Za-z\-_]+\.zip)}
+      unless zip_url.empty?
+        return response unless File.file?(Dir.pwd + request.path_info)
+
+        return response(
+          headers: {
+            'Content-Type' => 'application/zip'
+          },
+          body: File.open(Dir.pwd + request.path_info).read,
+          status: 200
+        )
+      end
+
     end
     response
   end

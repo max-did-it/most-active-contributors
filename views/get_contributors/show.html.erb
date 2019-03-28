@@ -1,6 +1,29 @@
-<h1>
-  contributors
-    <% certs.each do | cert | %>
-      <a href="<%= cert[:url] %>"><%= cert[:owner] %></a>
-    <% end %>
-</h1>
+<div class="hero">
+  <div class="head">
+      <h1 class="subtitle">Contributors</h1>
+  </div>
+  <div class="hero-body">
+    <div class="box">      
+      <div class="content">
+        <ol class="is-upper-roman">
+            <% certs.each do | cert | %>
+              <li>
+                  <a href="<%= cert[:url] %>"><%= cert[:owner] %></a>
+              </li>  
+            <% end %>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="hero">
+    <div class="head">
+        <h1 class="subtitle">All certificates in archive</h1>
+    </div>
+    <div class="hero-body">
+      <div class="box">      
+          <a href="<%= zip %>">Download</a>
+      </div>
+    </div>
+  </div>
+  
